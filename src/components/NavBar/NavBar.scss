@@ -1,0 +1,31 @@
+.navBar {
+  background-color: #333366;
+  display: flex;
+  flex-direction: row;
+  height: 1 rem;
+  color: white;
+  font-size: 1.2em;
+  align-items: flex-end;
+  padding-left: 2rem;
+  
+  &-link {
+    text-decoration: none;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.4rem;
+  
+    color: white;
+  }
+}
+
+.selected {
+  color: #01FF70 !important;
+}
+
+
+#nav-logo {
+  height: 3rem;
+
+}

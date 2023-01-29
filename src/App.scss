@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+  font-family: 'Chivo', sans-serif;
+  background-color: #282c34;
+  
+  &-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  &-link {
+    color: #61dafb;
+  }
+
+  &-body {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+  
+    padding-top: 1rem;
+    margin-left: 8rem;
+    margin-right: 8rem;
+
+    border-radius: 0px;
+    background: #282c34;
+    box-shadow:  15px 15px 15px 0px #22252c,
+             -15px 15px 15px 0px #22252c;
+  }
+}
