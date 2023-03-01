@@ -1,6 +1,5 @@
 const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
-const uuid = require('uuid');
 
 const gearTableName = process.env.GEAR_TABLE_NAME;
 
@@ -25,12 +24,14 @@ exports.handler = async (event) => {
       },
     };
 
-    const results = await docClient.delete(params)
+    const results = await docClient.delete(params).promise();
 
     lambdaResponse.body = results;
   } catch (e) {
     lambdaResponse.statusCode = 400;
     lambdaResponse.body = e.message;
+  } finally {
+    lambdaResponse.body = JSON.stringify(lambdaResponse.body);
   }
 
   return lambdaResponse;

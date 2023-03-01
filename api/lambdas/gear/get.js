@@ -11,17 +11,23 @@ exports.handler = async (event) => {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET,DELETE"
     },
-    body: '',
+    body: [],
+  }
+
+  const params = {
+    TableName: gearTableName,
   }
 
   try {
-    const gear = await docClient.scan({
-      TableName: gearTableName,
-    });
-    lambdaResponse.body = gear;
+    const gear = await docClient.scan(params).promise();
+    console.log(gear.Items);
+    
+    gear.Items.forEach((item) => lambdaResponse.body.push(item));
   } catch (e) {
     lambdaResponse.statusCode = 400;
     lambdaResponse.body = e.message;
+  } finally {
+    lambdaResponse.body = JSON.stringify(lambdaResponse.body)
   }
 
   return lambdaResponse;
