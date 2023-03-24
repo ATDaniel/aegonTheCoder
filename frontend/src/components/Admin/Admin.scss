@@ -1,0 +1,47 @@
+.admin {
+  &-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 18em;
+
+    .inputItem {
+      display: grid;
+      // grid-template-columns: 250px 250px;
+      grid-template-columns: 80px 1fr 2fr 80px;
+      align-items: center;
+      width: 100%;
+      margin-top: 0.5rem;
+
+      label {
+        align-items: center;
+        // justify-self: flex-start;
+        font-size: 24px;
+        grid-column: 2;
+      }
+
+      input {
+        position: relative;
+        margin-left: 3rem;
+        grid-column: 3;
+      }
+
+      textarea {
+        position: relative;
+        margin-left: 3rem;
+        grid-column: 3;
+        font-family: inherit;
+      }
+    }
+    
+    button {
+      align-self: center;
+      justify-self: center;
+      margin-top: 1em;
+
+    }
+
+  }
+
+}
