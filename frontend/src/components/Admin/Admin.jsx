@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { getGear, putGear, deleteGear } from '../../api/apiService';
+import { useSelector } from 'react-redux';
+import { putGear, } from '../../api/apiService';
 import './Admin.scss';
 
 const Admin = () => {
+  const isAdmin = useSelector(state => state.auth.isAdmin);
 
   const [name, setName] = useState('');
   const [body, setBody] = useState('');
@@ -35,6 +37,10 @@ const Admin = () => {
     notification = <p>{ message }</p>
   } else {
     notification = <p></p>
+  }
+
+  if (!isAdmin) {
+    return <h4>Please Log In</h4>
   }
 
   return (

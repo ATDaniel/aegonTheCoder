@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import SetupItem from './SetupItem/SetupItem';
-import { getGear } from '../../api/apiService';
 import './Setup.scss';
 
 const Setup = () => {
-  const [gearList, setGearList] = useState([]);
-
-  useEffect(() => {
-    getGear().then((gear) => {
-      setGearList(gear);
-    });
-  }, []);
+  const gearList = useSelector(state => state.gear.gearList);
 
   if (!gearList) {
     return <h2>Loading...</h2>

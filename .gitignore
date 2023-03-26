@@ -3,3 +3,4 @@ deploy.sh
 env.json
 .DS_Store
 reportWebVitals.js
+./frontend/build/**/*

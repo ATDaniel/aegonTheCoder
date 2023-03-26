@@ -1,5 +1,9 @@
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setGear } from './redux/actions/gear';
+import { getGear } from './api/apiService';
 
 import NavBar from './components/NavBar/NavBar';
 import About from './components/About/About';
@@ -9,6 +13,14 @@ import Setup from './components/Setup/Setup';
 import Admin from './components/Admin/Admin';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getGear().then((gear) => {
+      dispatch(setGear(gear));
+    });
+  }, [dispatch]);
+
   return (
     <div className="App">
       <BrowserRouter>
