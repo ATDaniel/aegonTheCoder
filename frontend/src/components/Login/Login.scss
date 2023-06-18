@@ -1,6 +1,4 @@
-.admin {
-  width: 100;
-  
+.login {
   &-form {
     display: flex;
     flex-direction: column;
@@ -43,12 +41,4 @@
     }
 
   }
-
-  &-notification {
-    font-size: 16px;
-    height: 2rem;
-
-    margin-top: 2rem;
-  }
-
 }

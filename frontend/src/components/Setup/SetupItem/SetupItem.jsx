@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { deleteGear } from '../../../api/apiService';
 import deleteIcon from '../../../assets/delete-button.png'
 import './SetupItem.scss';
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { putGear, } from '../../api/apiService';
+import { putGear } from '../../api/apiService';
+import Login from '../Login/Login';
 import './Admin.scss';
 
 const Admin = () => {
@@ -15,32 +16,22 @@ const Admin = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(`
-    Name: ${name}
-    Body: ${body}
-    Link: ${link}
-    ImageLink: ${imgLink}`);
-
-    const response = putGear({name, body, link, imgLink});
-    if (response.status === 200) {
+    try {
+      await putGear({name, body, link, imgLink});
       setMessage('Item successfully added to gear list');
-    } else {
-      setMessage('Something went wrong');
+    } catch (e) {
+      console.log('in catch block');
+      setMessage(`Something went wrong: ${e}`);
+      console.log(`message: ${message}`);
     }
 
-    setTimeout(() => {}, 3000);
-    setMessage('');
+    setTimeout(() => {
+      setMessage('');
+    }, 5000);
   }
 
-  let notification;
-  if (message) {
-    notification = <p>{ message }</p>
-  } else {
-    notification = <p></p>
-  }
-
-  if (!isAdmin) {
-    return <h4>Please Log In</h4>
+  if (isAdmin) {
+    return <Login />;
   }
 
   return (
@@ -67,8 +58,8 @@ const Admin = () => {
           <button type='submit'>Submit</button>
         </div>
       </form>
-      <div className='admin-messageNotification'>
-        { notification }
+      <div className='admin-notification'>
+        { message }
       </div>
     </div>
   );
