@@ -32,7 +32,7 @@ export const putGear = async (gearObj) => {
     return response;
   } catch (e) {
     console.error('Error with dynamo put request: ', e);
-    return e;
+    throw new Error(e);
   }
 }
 

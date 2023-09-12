@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import SetupItem from './SetupItem/SetupItem';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setGear } from '../../redux/actions/gear';
 import { getGear } from '../../api/apiService';
+import SetupItem from './SetupItem/SetupItem';
 import './Setup.scss';
 
 const Setup = () => {
-  const [gearList, setGearList] = useState([]);
+  const dispatch = useDispatch();
+  // const gearList = useSelector(state => state.gear.gearList);
+  const [gearList, setGearList ] = useState([]);
 
   useEffect(() => {
     getGear().then((gear) => {
@@ -12,7 +16,13 @@ const Setup = () => {
     });
   }, []);
 
-  if (!gearList) {
+  const removeGear = (gearId) => {
+    const newList = gearList.filter((item) => item.id !== gearId);
+    setGearList(newList);
+  }
+  
+
+  if (!gearList.length) {
     return <h2>Loading...</h2>
   }
 
@@ -23,7 +33,7 @@ const Setup = () => {
       </div>
       <div className='setup-gearList'>
         {gearList.map((gearItem) => 
-          <SetupItem item={gearItem}/>
+          <SetupItem item={gearItem} listChange={removeGear}/>
         )}
       </div>
     </div>

@@ -9,13 +9,14 @@ import Setup from './components/Setup/Setup';
 import Admin from './components/Admin/Admin';
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
         <div className='App-body'>
           <Routes>
-            <Route path='/' element={ <Home /> }/>
+            <Route path='/' element={ <Home /> } />
             <Route path='/about' element={ <About /> }/>
             <Route path='/links' element={ <Links /> }/>
             <Route path='/setup' element={ <Setup /> }/>

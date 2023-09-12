@@ -4,19 +4,19 @@
   justify-items: center;
 
   width: 260px;
-  height: 300px;
+  // height: 300px;
   border-radius: 36px;
   margin: .5em;
 
   background: #282c34;
-  box-shadow:  7px 7px 15px #404040,
-             -7px -7px 15px #404040;
+  box-shadow:  7px 7px 15px #404040, -7px -7px 15px #404040;
 
   &-image {
     grid-row-start: 1;
     grid-row-end: 3;
     display: flex;
     width: 260px;
+    height: 180px;
     border-top-left-radius: 36px;
     border-top-right-radius: 36px;
     background: white;
@@ -36,6 +36,7 @@
     flex-direction: column;
     text-align: left;
     padding: 10px;
+    padding-top: 0px;
   }
   
   &-title {
@@ -50,5 +51,20 @@
 
   &-body p {
     font-size: 16px;
+  }
+
+  .deleteButton {
+    position: relative;
+    cursor: pointer;
+    top: -170px;
+    left: -100px;
+    
+    img {
+      width: 30px;
+      height: 30px;
+      // position: absolute;
+      // top: -170px;
+      // left: -110px;
+    }
   }
 }
