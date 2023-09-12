@@ -32,8 +32,8 @@ exports.handler = async (event) => {
     const user = response.Item;
 
     if (!user) {
-      lambdaResponse.statusCode = 500;
-      lambdaResponse.body.message = 'No user found'
+      lambdaResponse.statusCode = 404;
+      lambdaResponse.body.message = 'User not found'
       lambdaResponse.body = JSON.stringify(lambdaResponse.body);
       return lambdaResponse;
     }
@@ -41,7 +41,7 @@ exports.handler = async (event) => {
     const isMatch = compareSync(password, user.password);
 
     if (!isMatch) {
-      lambdaResponse.statusCode = 500;
+      lambdaResponse.statusCode = 400;
       lambdaResponse.body.message = 'Passwords did not match'
       lambdaResponse.body = JSON.stringify(lambdaResponse.body);
       return lambdaResponse;
@@ -57,6 +57,7 @@ exports.handler = async (event) => {
     lambdaResponse.body.error = e.message;
     lambdaResponse.body = JSON.stringify(lambdaResponse.body);
   } finally {
+    console.log(`In Post endpoint: ${JSON.stringify(lambdaResponse)}`)
     return lambdaResponse;
   }
 }

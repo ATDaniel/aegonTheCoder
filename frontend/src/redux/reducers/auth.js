@@ -1,4 +1,4 @@
-import { LOGIN } from '../actions/auth';
+import { SET_LOGIN } from '../actions/auth';
 
 const initialState = {
   isAdmin: false,
@@ -6,7 +6,7 @@ const initialState = {
 
 export const auth = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN: {
+    case SET_LOGIN: {
       return {
         ...state,
         isAdmin: true,

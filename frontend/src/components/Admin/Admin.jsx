@@ -20,9 +20,7 @@ const Admin = () => {
       await putGear({name, body, link, imgLink});
       setMessage('Item successfully added to gear list');
     } catch (e) {
-      console.log('in catch block');
       setMessage(`Something went wrong: ${e}`);
-      console.log(`message: ${message}`);
     }
 
     setTimeout(() => {
@@ -30,7 +28,7 @@ const Admin = () => {
     }, 5000);
   }
 
-  if (isAdmin) {
+  if (!isAdmin) {
     return <Login />;
   }
 

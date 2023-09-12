@@ -1,6 +1,6 @@
-export const LOGIN = 'LOGIN';
+export const SET_LOGIN = 'SET_LOGIN';
 
-export const login = () => ({
-  type: LOGIN,
+export const setLogin = () => ({
+  type: SET_LOGIN,
   payload: {}
 });

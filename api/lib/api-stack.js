@@ -3,7 +3,7 @@ const { Construct } = require('constructs');
 const { Table, AttributeType } = require('aws-cdk-lib').aws_dynamodb;
 const iam = require('aws-cdk-lib').aws_iam;
 const lambda = require('aws-cdk-lib').aws_lambda;
-const { RestApi, LambdaIntegration } = require('aws-cdk-lib').aws_apigateway;
+const { RestApi, LambdaIntegration, Cors } = require('aws-cdk-lib').aws_apigateway;
 
 
 class ApiStack extends Stack {
@@ -85,6 +85,19 @@ class ApiStack extends Stack {
           }),
         ],
       }),
+      defaultCorsPreflightOptions: {
+        allowHeaders: [
+          'Accept',
+          'Authorization',
+          'Referer',
+          'Origin',
+          'User-Agent',
+          'Content-Type',
+        ],
+        allowMethods: Cors.ALL_METHODS,
+        allowCredentials: true,
+        allowOrigins: ['https://aegonthecoder.com'],
+      },
     });
 
     const authApi = new RestApi(this, 'authApi', {
@@ -106,6 +119,19 @@ class ApiStack extends Stack {
           }),
         ],
       }),
+      defaultCorsPreflightOptions: {
+        allowHeaders: [
+          'Accept',
+          'Authorization',
+          'Referer',
+          'Origin',
+          'User-Agent',
+          'Content-Type',
+        ],
+        allowMethods: Cors.ALL_METHODS,
+        allowCredentials: true,
+        allowOrigins: ['https://aegonthecoder.com'],
+      },
     });
 
     //  /gear
